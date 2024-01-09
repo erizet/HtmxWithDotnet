@@ -1,0 +1,13 @@
+﻿@model HtmxWithDotnet.Pages.VerticalMenuModel
+@{
+}
+
+
+<div class="vertical-menu">
+    @foreach (var mi in Model.GetMenuItems())
+    {
+        <a href="@mi.Link" class="@(mi.Selected ? "active" : "")">@mi.Text</a>
+    }
+</div>
+
+<h1>@Model.Id</h1>

@@ -1,0 +1,11 @@
+﻿@page "{id:int?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var menuModel = new VerticalMenuModel(Model.Id);
+}
+
+<p>Sidan laddades @TimeOnly.FromDateTime(DateTime.Now).ToLongTimeString()</p>
+<div class="text-center">
+    <partial name="VerticalMenu" model="menuModel" />
+</div>
