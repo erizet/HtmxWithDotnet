@@ -2,12 +2,13 @@
 @{
 }
 
+<div id="toReplace">
+    <div class="vertical-menu" hx-target="#toReplace" hx-push-url="true" hx-swap="outerHTML">
+        @foreach (var mi in Model.GetMenuItems())
+        {
+            <a href="@mi.Link" class="@(mi.Selected ? "active" : "")" hx-get="@mi.Link">@mi.Text</a>
+        }
+    </div>
 
-<div class="vertical-menu">
-    @foreach (var mi in Model.GetMenuItems())
-    {
-        <a href="@mi.Link" class="@(mi.Selected ? "active" : "")">@mi.Text</a>
-    }
+    <h1>@Model.Id</h1>
 </div>
-
-<h1>@Model.Id</h1>

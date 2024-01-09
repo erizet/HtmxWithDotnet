@@ -1,3 +1,4 @@
+using Htmx;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -14,9 +15,16 @@ namespace HtmxWithDotnet.Pages
 
         public int? Id { get; set; }
 
-        public void OnGet(int? id)
+        public IActionResult OnGet(int? id)
         {
             Id = id;
+
+            if (this.HttpContext.Request.IsHtmx())
+            {
+                return Partial("VerticalMenu", new VerticalMenuModel(id));
+            }
+
+            return Page();
         }
     }
 }
