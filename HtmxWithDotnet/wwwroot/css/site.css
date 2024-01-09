@@ -42,3 +42,10 @@ body {
             background-color: #04AA6D; /* Add a green color to the "active/current" link */
             color: white;
         }
+
+
+div.htmx-request {
+    pointer-events: none;
+    opacity: 0.4;
+    overflow: hidden;
+}
