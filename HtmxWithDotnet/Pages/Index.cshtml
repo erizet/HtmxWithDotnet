@@ -2,10 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    var menuModel = new VerticalMenuModel(Model.Id);
+    var menuModel = new VerticalMenuModel(Model.Id, "/Index");
 }
 
 <p>Sidan laddades @TimeOnly.FromDateTime(DateTime.Now).ToLongTimeString()</p>
 <div class="text-center">
-    <partial name="VerticalMenu" model="menuModel" />
+    <partial name="IndexSubPage" model="menuModel" />
 </div>

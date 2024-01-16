@@ -5,9 +5,15 @@ namespace HtmxWithDotnet.Pages
 {
     public class VerticalMenuModel : PageModel
     {
-        public VerticalMenuModel(int? id)
+        private readonly string _baseUri;
+
+        public VerticalMenuModel(int? id, string baseUri)
         {
             Id = id;
+            _baseUri = baseUri;
+
+            if(!_baseUri.EndsWith("/"))
+                _baseUri += "/";
         }
 
         public int? Id { get; }
@@ -22,7 +28,7 @@ namespace HtmxWithDotnet.Pages
 
             for (int i = 1; i < 5; i++)
             {
-                yield return new MenuItem("Page " + i, "/index/" + i, Id == i);
+                yield return new MenuItem("Page " + i, _baseUri + i, Id == i);
             }
         }
     }

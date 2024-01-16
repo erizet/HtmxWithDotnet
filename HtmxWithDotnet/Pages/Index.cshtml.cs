@@ -22,7 +22,7 @@ namespace HtmxWithDotnet.Pages
             if (this.HttpContext.Request.IsHtmx())
             {
                 Thread.Sleep(2000);
-                return Partial("VerticalMenu", new VerticalMenuModel(id));
+                return Partial("IndexSubPage", new VerticalMenuModel(id, "/Index"));
             }
 
             return Page();

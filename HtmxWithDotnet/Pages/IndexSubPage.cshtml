@@ -1,0 +1,8 @@
+﻿@model HtmxWithDotnet.Pages.VerticalMenuModel
+@{
+}
+
+<div id="toReplace" hx-target="#toReplace" hx-push-url="true" hx-swap="innerHTML" hx-indicator="#toReplace">
+    <partial name="VerticalMenu" model="Model" />
+    <h1>@Model.Id</h1>
+</div>

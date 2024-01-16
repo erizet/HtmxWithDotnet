@@ -1,0 +1,16 @@
+﻿@page "{id:int?}"
+@model HtmxWithDotnet.Pages.OutsideModel
+@{
+    ViewData["Title"] = "Out of bound";
+    var menuModel = new VerticalMenuModel(Model.Id, "/Outside");
+}
+
+<p>Sidan laddades @TimeOnly.FromDateTime(DateTime.Now).ToLongTimeString()</p>
+<div class="text-center">
+    <div id="toReplace" hx-target="#toReplace" hx-push-url="true" hx-swap="innerHTML" hx-indicator="#toReplace">
+        <partial name="OutSideOOB" model="menuModel" />
+    </div>
+
+    <p>Sidan laddades @TimeOnly.FromDateTime(DateTime.Now).ToLongTimeString()</p>
+    <h1 id="theId">@Model.Id</h1>
+</div>
