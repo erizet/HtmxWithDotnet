@@ -1,0 +1,38 @@
+﻿@page "{id:int?}"
+@model HtmxWithDotnet.Pages.ClientSideModel
+@{
+    ViewData["Title"] = "Out of bound";
+}
+
+<p>Sidan laddades @TimeOnly.FromDateTime(DateTime.Now).ToLongTimeString()</p>
+<div class="text-center">
+    <div id="toReplace" hx-target="#theId" hx-push-url="true" hx-swap="outerHTML" hx-indicator="#toReplace">
+        <div id="client-side-menu" class="vertical-menu">
+            @foreach (var mi in Model.GetMenuItems())
+            {
+                <a href="@mi.Link" hx-get="@mi.Link" class="@(mi.Selected ? "active" : "")" onclick="menuItemClicked(event);">@mi.Text</a>
+            }
+        </div>
+    </div>
+
+
+    <p>Sidan laddades @TimeOnly.FromDateTime(DateTime.Now).ToLongTimeString()</p>
+    <h1 id="theId">@Model.Id</h1>
+</div>
+
+<script type="text/javascript">
+    function menuItemClicked(event) {
+        var menuDiv = document.getElementById("client-side-menu");
+        var children = menuDiv.children;
+        for (var index = 0; index < children.length; index++) {
+            var child = children[index];
+
+            child.classList.remove('active');
+
+            if (child == event.target)
+                child.classList.add('active');
+        }
+
+        //alert("clicked");
+    }
+</script>
