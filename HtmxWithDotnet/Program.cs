@@ -1,3 +1,6 @@
+using HtmxWithDotnet.Pages;
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace HtmxWithDotnet
 {
     public class Program
@@ -8,6 +11,7 @@ namespace HtmxWithDotnet
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddRazorComponents();
 
             var app = builder.Build();
 
@@ -26,6 +30,9 @@ namespace HtmxWithDotnet
 
             app.UseAuthorization();
 
+            app.MapGet("api/razor/{id:int?}", (int? id) => {
+                return new RazorComponentResult<MyRazorComponent>(new { Id = id, BaseUri = "/api/razor/" });
+            });
             app.MapRazorPages();
 
             app.Run();

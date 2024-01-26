@@ -1,0 +1,28 @@
+﻿
+<div id="toReplace" hx-target="#toReplace" hx-push-url="true" hx-swap="outerHTML" hx-indicator="#toReplace" class="text-center">
+    <div class="vertical-menu">
+        @foreach (var mi in GetMenuItems())
+        {
+            <a href="@mi.Link" class="@(mi.Selected ? "active" : "")" hx-get="@mi.Link">@mi.Text</a>
+        }
+    </div>
+    <h1>@(Id == null ? "null" : Id.ToString())</h1>
+</div>
+
+
+@code {
+    [Parameter]
+    public int? Id { get; set; } = null;
+    [Parameter]
+    public string BaseUri { get; set; } = string.Empty;
+
+    public IEnumerable<MenuItem> GetMenuItems()
+    {
+        yield return new MenuItem("No selection", BaseUri, Id == null);
+
+        for (int i = 1; i < 5; i++)
+        {
+            yield return new MenuItem("Page " + i, BaseUri + i, Id == i);
+        }
+    }
+}

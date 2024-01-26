@@ -24,7 +24,7 @@ namespace HtmxWithDotnet.Pages
 
         public IEnumerable<MenuItem> GetMenuItems()
         {
-            yield return new MenuItem("Home", "/", Id == null);
+            yield return new MenuItem("Home", _baseUri, Id == null);
 
             for (int i = 1; i < 5; i++)
             {

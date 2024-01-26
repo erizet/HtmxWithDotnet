@@ -1,0 +1,9 @@
+﻿@page "{id:int?}"
+@model HtmxWithDotnet.Pages.RazorModel
+@{
+}
+
+<h3>Page using MyRazorComponent created at @DateTime.Now.ToLongTimeString()</h3>
+
+<div hx-get="/api/razor/@Model.Id" hx-trigger="load" id="toReplace" hx-target="#toReplace" hx-swap="outerHTML">
+</div>
