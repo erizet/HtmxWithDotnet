@@ -1,0 +1,11 @@
+﻿@page
+@model HtmxWithDotnet.Pages.SSEModel
+@{
+}
+
+<h2>Receiveing updates from the server using SSE</h2>
+
+<section>
+    <div hx-sse="connect:@Url.PageLink("SSE", "Connect") swap:message">
+    </div>
+</section>
