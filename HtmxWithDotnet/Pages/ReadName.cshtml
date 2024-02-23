@@ -1,0 +1,33 @@
+﻿@page
+@using Htmx
+@model HtmxWithDotnet.Pages.ReadNameModel
+@{
+}
+
+@if(Request.HttpContext.Request.IsHtmx())
+{
+    Layout = null;
+    <h3>Welcome @Model.Name</h3>
+    return;
+}
+
+
+<span>Page loaded at @DateTime.Now.ToLongTimeString()</span>
+
+<div class="row" id="kalle">
+    <h3>Post using HTMX</h3>
+    <form hx-post="/readname" hx-target="#kalle">
+        <input type="text" name="name" />
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div>
+
+@* <br />
+
+<div class="row">
+    <h3>"Normal" form</h3>
+    <form method="post">
+        <input type="text" name="name" />
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div> *@
